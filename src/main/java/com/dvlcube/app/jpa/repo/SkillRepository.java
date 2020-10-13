@@ -12,5 +12,14 @@ import com.dvlcube.app.jpa.DvlRepository;
  */
 @Repository
 public interface SkillRepository extends DvlRepository<SkillBean, Long>, BasicRepository<SkillBean, Long> {
-  Optional <Skills> findByNomeContaining (String nome);
+  
+  public List<SkillBean> findAllByOrderName(Sort sort);
+
+	public List<SkillBean> findAll(Map<String, String> params, String group);
+
+	public List<SkillBean> findAll(Map<String, String> params);
+
+	public List<SkillBean> findAllByName(String name);
+
+
 }
