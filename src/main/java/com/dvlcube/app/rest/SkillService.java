@@ -41,6 +41,12 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
 		return repo.firstPage();
 	}
+	
+	@Override
+	@GetMapping("/skills/por-nome")
+	public Optional <Skills> skillPorNome(@RequestParam ("nome") String nome){
+		return skillRepository.findByNome(nome);
+	}	
 
 	@Override
 	@GetMapping("/{id}")
