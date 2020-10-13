@@ -12,5 +12,5 @@ import com.dvlcube.app.jpa.DvlRepository;
  */
 @Repository
 public interface SkillRepository extends DvlRepository<SkillBean, Long>, BasicRepository<SkillBean, Long> {
-  Optional <Skills> findByNome (String nome);
+  Optional <Skills> findByNomeContaining (String nome);
 }
