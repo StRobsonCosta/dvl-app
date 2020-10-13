@@ -45,7 +45,7 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	@Override
 	@GetMapping("/skills/por-nome")
 	public Optional <Skills> skillPorNome(@RequestParam ("nome") String nome){
-		return skillRepository.findByNome(nome);
+		return skillRepository.findByNomeContaining(nome);
 	}	
 
 	@Override
