@@ -36,16 +36,31 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	@Autowired
 	private SkillRepository repo;
 
-	@Override
+	//@Override
+	//@GetMapping
+	//public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
+	//	return repo.firstPage();
+	//}
+	
 	@GetMapping
-	public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
-		return repo.firstPage();
+	public List<SkillBean> listSkill() {
+		return repo.findAllByOrderName(null);
+	}
+	
+	@GetMapping("/skills/exists/name/{name}")
+	public boolean listNameExist() {
+		return false;
 	}
 
 	@Override
 	@GetMapping("/{id}")
 	public Optional<SkillBean> get(@PathVariable Long id) {
 		return repo.findById(id);
+	}
+	
+	@GetMapping("/skills/name/{name}")
+	public List<SkillBean> listSkillName() {
+		return repo.findAllByName(SkillBean.class.getName());	
 	}
 
 	@Override
