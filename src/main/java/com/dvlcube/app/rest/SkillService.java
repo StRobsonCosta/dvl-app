@@ -1,7 +1,5 @@
 package com.dvlcube.app.rest;
 
-import static com.dvlcube.app.manager.data.e.Menu.CONFIGURATION;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dvlcube.app.interfaces.MenuItem;
 import com.dvlcube.app.jpa.repo.SkillRepository;
 import com.dvlcube.app.manager.data.SkillBean;
+import com.dvlcube.app.manager.data.e.Menu;
 import com.dvlcube.app.manager.data.vo.MxRestResponse;
 import com.dvlcube.utils.interfaces.rest.MxFilterableBeanService;
 
@@ -29,38 +28,23 @@ import com.dvlcube.utils.interfaces.rest.MxFilterableBeanService;
  * @author Ulisses Lima
  */
 @RestController
-@MenuItem(value = CONFIGURATION)
+@MenuItem(value = Menu.SKILL)
 @RequestMapping("${dvl.rest.prefix}/skills")
 public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 
 	@Autowired
 	private SkillRepository repo;
 
-	//@Override
-	//@GetMapping
-	//public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
-	//	return repo.firstPage();
-	//}
-	
+	@Override
 	@GetMapping
-	public List<SkillBean> listSkill() {
-		return repo.findAllByOrderName(null);
-	}
-	
-	@GetMapping("/skills/exists/name/{name}")
-	public boolean listNameExist() {
-		return false;
+	public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
+		return repo.firstPage();
 	}
 
 	@Override
 	@GetMapping("/{id}")
 	public Optional<SkillBean> get(@PathVariable Long id) {
 		return repo.findById(id);
-	}
-	
-	@GetMapping("/skills/name/{name}")
-	public List<SkillBean> listSkillName() {
-		return repo.findAllByName(SkillBean.class.getName());	
 	}
 
 	@Override
@@ -70,24 +54,13 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 		return GenericRestResponse.ok(save.getId());
 	}
 
-	/**
-	 * @param params
-	 * @return List<SkillBean>
-	 * @since 18 de abr de 2019
-	 * @author Ulisses Lima
-	 */
+
 	@GetMapping("/filtered")
 	public List<SkillBean> getFiltered(@RequestParam Map<String, String> params) {
 		return repo.findAllBy(params);
 	}
 
-	/**
-	 * @param group
-	 * @param params
-	 * @return List<SkillBean>
-	 * @since 18 de abr de 2019
-	 * @author Ulisses Lima
-	 */
+
 	@GetMapping("/group/{group}/filtered")
 	public List<SkillBean> getGroupFiltered(@PathVariable String group, @RequestParam Map<String, String> params) {
 		return repo.findAllBy(params, group);
@@ -102,4 +75,15 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	public void delete(@PathVariable Long id) {
 		repo.deleteById(id);
 	}
+	
+	@GetMapping("/name/{name}")
+	public Iterable<SkillBean> getLikeSkill(@PathVariable(required = true) String name) {
+		return repo.findByName(name);
+	}
+	
+	@GetMapping("/exists/name/{name}")
+	public boolean getExistsSkill(@PathVariable(required = true) String name) {
+		return repo.existsByName(name);
+	}
+
 }

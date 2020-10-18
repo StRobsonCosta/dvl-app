@@ -21,4 +21,3 @@ target
 /nbdist/
 /.nb-gradle/
 /build/
-/.metadata/

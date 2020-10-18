@@ -27,7 +27,8 @@
 		<dependency>
 			<groupId>com.dvlcube.xpress</groupId>
 			<artifactId>dvl-core</artifactId>
-			<version>1.0</version>
+			<version>1.0.1</version>
+			
 		</dependency>
 
 		<!-- spring boot -->
@@ -42,12 +43,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>]
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -62,12 +57,6 @@
 
 		<!-- others -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		
-		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.20</version>
@@ -78,13 +67,19 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>4.1.4.Final</version>
 		</dependency>
-
+		
 		<dependency>
 	        <groupId>javax.servlet.jsp</groupId>
 	        <artifactId>javax.servlet.jsp-api</artifactId>
 	        <version>2.3.1</version>
 	        <scope>provided</scope>
 	    </dependency>
+		
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

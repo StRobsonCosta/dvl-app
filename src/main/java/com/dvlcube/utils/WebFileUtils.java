@@ -67,11 +67,11 @@ public class WebFileUtils {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName());
 
-		// TODO verificar por que como ZIP não está funcionando
+		// TODO 
 		InputStreamResource resource = resource(file, zip);
-		return ResponseEntity.ok() //
-				.headers(headers) //
-//				.contentLength(resource.contentLength()) // illegal state. and incorrect length truncates file
+		return ResponseEntity.ok() 
+				.headers(headers) 
+				.contentLength(resource.contentLength()) // illegal state. and incorrect length truncates file
 				.contentType(MediaType.parseMediaType("application/octet-stream")) //
 				.body(resource);
 	}
