@@ -87,7 +87,7 @@ this.state = {
             </div>
         </div>
     </div>
-    <div class="footer-copyright center deep-purple accent-4">
+    <div class="footer-copyright center col l12 s12 accent-4">
         <div class="container">
             Robson da Costa Santos
         </div>       
